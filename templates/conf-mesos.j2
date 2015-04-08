@@ -10,5 +10,9 @@ ZK="{{ mesos_zookeeper_masters }}"
 
 # mesos env variables
 # see http://mesos.apache.org/documentation/latest/configuration/
+{% if mesos_hostname and mesos_hostname != 'DEFAULT' %}
 export MESOS_HOSTNAME="{{ mesos_hostname }}"
+{% else %}
+#export MESOS_HOSTNAME="{{ mesos_ip }}"
+{% endif %}
 export MESOS_PORT="{{ mesos_port }}"
